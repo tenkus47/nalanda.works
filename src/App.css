@@ -1,0 +1,35 @@
+:root{
+  --textColor:white;
+  --backgroundColor:#06113C;
+}
+.App {
+  text-align: center;
+
+}
+body{  
+
+  background-color:var(--backgroundColor);
+  text-shadow: 2px 2px 10px black;
+  color:var(--textColor);
+  letter-spacing: 2px;
+
+}
+.absoluteBackground{
+  width: 100vw;
+  z-index: -2;
+  height: 100vh;
+  position: fixed;
+  background-image: url("https://preview.redd.it/3hvyombnvpr61.jpg?width=960&crop=smart&auto=webp&s=f810a283e84750388de7f46639203e3ed63547f9");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+footer{
+  position:fixed;
+  bottom:0;
+  background-color: black;
+  color:white;
+  width: 100vw;
+}
