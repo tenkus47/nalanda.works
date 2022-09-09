@@ -1,9 +1,11 @@
-import React from 'react'
-import '../style/heading.css'
-function Heading() {
+import React from "react";
+import { Typography } from "@mui/material";
+function HomeHeading() {
   return (
-    <header>པན་གྲུབ་བཅུ་བདུན།</header>
-  )
+    <Typography variant="h2" mb={2} align="center">
+      པན་གྲུབ་བཅུ་བདུན།
+    </Typography>
+  );
 }
 
-export default Heading
+export default HomeHeading;

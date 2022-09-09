@@ -1,51 +1,118 @@
-import React,{useEffect} from 'react'
-import { useDispatch,useSelector } from 'react-redux';
-import { scroller } from "react-scroll";
-import LazyLoad from 'react-lazy-load';
-import '../style/index.css'
-import Aos from 'aos';
-import 'aos/dist/aos.css'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import LazyLoad from "react-lazy-load";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Grid,
+  Button,
+  ButtonGroup,
+} from "@mui/material";
+import Carousel from "react-material-ui-carousel";
+import "./styles.css";
+
 function ListOfPan() {
+  const dispatch = useDispatch();
 
-    
-    useEffect(()=>{
-        Aos.init({duration:2000});
-    },[])
-
-
-const dispatch=useDispatch();
-const scrollToSection = () => {
-    scroller.scrollTo("root", {
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
-  };
-
-   function handleClick(list){
-   dispatch({type:"changeSelection",data:list})
-    scrollToSection()
+  const data = useSelector((data) => data.List);
+  return (
+    <Carousel
+      autoPlay={false}
+      indicators={true}
+      swipe={true}
+      navButtonsAlwaysVisible={true}
+      cycleNavigation={true}
+      sx={{
+        paddingInline: "20px",
+        paddingBlock: "5px",
+        maxWidth: "850px",
+        margin: "0 auto",
+      }}
+    >
+      {data.map((item, index) => {
+        return <Banner item={item} key={index} />;
+      })}
+    </Carousel>
+  );
 }
-const data=useSelector(data=>data.List)
+
+type Item = {};
+
+interface BannerProps {
+  item: Item;
+  length?: number;
+}
+
+const Banner = (props: BannerProps) => {
+  const handleClick = (list) => window.open("https://parkhang.lopenling.org");
+
+  // dispatch({ type: "changeSelection", data: list });
+
+  const totalItems: number = props.length ? props.length : 2;
+  const mediaLength = totalItems - 1;
+  let items = [];
+  const content = (
+    <Grid item xs={8} lg={9} key="content" sx={{ background: "#ddad86" }}>
+      <CardContent className="Content">
+        <Typography className="Title" variant="h4">
+          {props.item.name}
+        </Typography>
+
+        <Typography className="Caption" variant="h6">
+          {props.item.desc}
+        </Typography>
+        <ButtonGroup disableElevation sx={{ gap: 1 }} variant="contained">
+          <Button
+            variant="outlined"
+            className="ViewButton"
+            onClick={handleClick}
+          >
+            GOOGLE
+          </Button>
+          <Button
+            variant="outlined"
+            className="ViewButton"
+            onClick={handleClick}
+          >
+            LOPENLING
+          </Button>
+          <Button
+            variant="outlined"
+            className="ViewButton"
+            onClick={handleClick}
+          >
+            BDRC
+          </Button>
+        </ButtonGroup>
+      </CardContent>
+    </Grid>
+  );
+
+  for (let i = 0; i < mediaLength; i++) {
+    const item = props.item;
+
+    const media = (
+      <Grid item xs={4} lg={3} key={item.name}>
+        <CardMedia className="Media" image={item.image} title={item.name}>
+          <Typography className="MediaCaption">{item.nameEng}</Typography>
+        </CardMedia>
+      </Grid>
+    );
+
+    items.push(media);
+  }
+
+  items.push(content);
 
   return (
-    <div className="pandetaList" >  
-{
- data.map((list,index)=>     
-           <LazyLoad offsetVertical={300} key={index}> 
-            <div className="card" data-aos={index%2===0?"fade-right":"fade-left"} key={list.id} onClick={()=>handleClick(list)}>
-               
-                  <img src={list.image}  alt="image1"/>
-             
-               <div className="card-body">
-                 <p className="card-text" >{list.name}</p>
-               </div>
-             </div>
-             </LazyLoad>
-        )
-    }
-   </div>
-  )
-}
+    <Card raised className="Banner">
+      <Grid container spacing={0} className="BannerGrid">
+        {items}
+      </Grid>
+    </Card>
+  );
+};
 
-export default ListOfPan
+export default ListOfPan;

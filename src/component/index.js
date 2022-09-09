@@ -1,21 +1,15 @@
-import React from 'react'
-import List from './ListOfPan'
-import Heading from './Heading'
-import Desc from './Desc'
-import {prayer} from '../helper/prayerMarquee'
+import React from "react";
+import List from "./ListOfPan";
+import Heading from "./Heading";
+import Namecards from "./Namecards";
 function Index() {
-
-
   return (
-    <div >
-        <div className='absoluteBackground'></div>
-         <Heading/>
-         <hr/>
-         <Desc/>
-         <List/>
-         <footer><marquee>{prayer}</marquee></footer>
-    </div>
-  )
+    <>
+      <Heading />
+      <List />
+      <Namecards />
+    </>
+  );
 }
 
-export default Index
+export default Index;
