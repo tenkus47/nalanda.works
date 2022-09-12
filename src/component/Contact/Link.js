@@ -10,7 +10,7 @@ import {
   Fade,
   Paper,
 } from "@mui/material";
-import { Facebook, Twitter, Reddit, Link } from "@mui/icons-material";
+import { Facebook, Twitter, Reddit } from "@mui/icons-material";
 import { makeStyles } from "@mui/styles";
 
 import PopupState, { bindToggle, bindPopper } from "material-ui-popup-state";
@@ -30,6 +30,24 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const ListContact = [
+  {
+    type: "Facebook",
+    url: "",
+    icon: <Facebook />,
+  },
+  {
+    type: "Twitter",
+    url: "",
+    icon: <Twitter />,
+  },
+  {
+    type: "Discord",
+    url: "",
+    icon: "",
+  },
+];
 
 export default function DropdownShareButton() {
   const classes = useStyles();
@@ -91,50 +109,19 @@ export default function DropdownShareButton() {
                 <Fade {...TransitionProps} timeout={350}>
                   <Paper>
                     <List dense={true} className={classes.paper}>
-                      <ListItem
-                        button
-                        style={{ paddingTop: ".75em" }}
-                        id="facebook"
-                        onClick={handleShare}
-                      >
-                        <ListItemIcon>
-                          <Facebook />
-                        </ListItemIcon>
-                        <ListItemText primary="Facebook" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        style={{ paddingTop: ".75em" }}
-                        id="twitter"
-                        onClick={handleShare}
-                      >
-                        <ListItemIcon>
-                          <Twitter />
-                        </ListItemIcon>
-                        <ListItemText primary="Twitter" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        style={{ paddingTop: ".75em" }}
-                        id="reddit"
-                        onClick={handleShare}
-                      >
-                        <ListItemIcon>
-                          <Reddit />
-                        </ListItemIcon>
-                        <ListItemText primary="Reddit" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        style={{ paddingTop: ".75em" }}
-                        id="copy"
-                        onClick={handleShare}
-                      >
-                        <ListItemIcon>
-                          <Link />
-                        </ListItemIcon>
-                        <ListItemText primary="Copy Link" />
-                      </ListItem>
+                      {ListContact.map((l) => {
+                        return (
+                          <ListItem
+                            button
+                            style={{ paddingTop: ".75em" }}
+                            id={l.type}
+                            onClick={handleShare}
+                          >
+                            <ListItemIcon>{l.icon}</ListItemIcon>
+                            <ListItemText primary={l.type} />
+                          </ListItem>
+                        );
+                      })}
                     </List>
                   </Paper>
                 </Fade>

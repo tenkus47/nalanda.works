@@ -5,7 +5,7 @@ import Home from "./component/Home";
 import React, { useEffect } from "react";
 import { changeSelection } from "./helper/myAction.js";
 import { Box } from "@mui/material";
-import Section3 from "./component/Contact";
+import Contact from "./component/Contact";
 import Pendeta from "./component/Pendeta";
 import { Element, Events, scrollSpy } from "react-scroll";
 import Divider from "@mui/material/Divider";
@@ -27,7 +27,7 @@ function App(props) {
   }, []);
 
   return (
-    <Box>
+    <Box className="main">
       <Element name={"header"} className="element">
         <Header />
       </Element>
@@ -37,7 +37,7 @@ function App(props) {
         <Pendeta />
       </Element>
       <Element name={"Contact"} className="element">
-        <Section3 />
+        <Contact />
       </Element>
     </Box>
   );

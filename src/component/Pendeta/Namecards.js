@@ -25,7 +25,7 @@ function Namecards({ setIndex }) {
       <Container sx={{ marginTop: 2, display: { md: "block", xs: "none" } }}>
         <Grid container spacing={2}>
           {data.map((pan, index) => (
-            <Grid item md={2} key={pan.id} onClick={() => handleClick(index)}>
+            <Grid item md={3} key={pan.id} onClick={() => handleClick(index)}>
               <Item>{pan.name}</Item>
             </Grid>
           ))}

@@ -7,38 +7,26 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Logo from "../../img/logo.png";
 import * as Scroll from "react-scroll";
 const pages = ["Pandetas", "Contact"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState();
-  const [anchorElUser, setAnchorElUser] = React.useState();
   const [transparent, setTransparent] = React.useState(true);
   let Link = Scroll.Link;
   var scroll = Scroll.animateScroll;
-  let pos = 0;
-  let body = document.body;
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
   window.addEventListener("scroll", () => {
     if (window.scrollY > 80) {
       setTransparent(false);

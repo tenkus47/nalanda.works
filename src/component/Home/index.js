@@ -3,6 +3,8 @@ import "./index.css";
 import { Box, Typography, Button, Tooltip } from "@mui/material";
 import { Container } from "@mui/system";
 import { Link } from "react-scroll";
+import Zoom from "react-img-zoom";
+import Thangka from "../../img/thangka.png";
 function index() {
   return (
     <Box
@@ -15,24 +17,34 @@ function index() {
         flexDirection: "column",
       }}
     >
-      <Typography ml={3} className="home-heading">
+      <div style={{ cursor: "zoom-in" }}>
+        <Zoom
+          img={Thangka}
+          // alt="nalanda "
+          // id="floated"
+          zoomScale={3}
+          width={500}
+          height={300}
+        />
+      </div>
+
+      <Typography
+        sx={{ alignSelf: { md: "center", xs: "left" } }}
+        className="home-heading"
+      >
         The Seventeen Panditas of Nalanda Monastery
       </Typography>
       <Container
         sx={{
           display: { md: "block", xs: "flex" },
-          flexDirection: "column",
+          flexDirection: "column-reverse",
         }}
       >
-        <Box m={2} mt={3}>
-          <Tooltip title="Thangka image depicting Shakaymuni Buddha and 17 Nalanda Pandits">
-            <img
-              src="https://fpmt.org/wp-content/webp-express/webp-images/uploads/sites/2/2012/05/17-Nalanda-Pandits_HHDL-Office-1-e1338579760327.jpg.webp"
-              alt="nalanda "
-              id="floated"
-            />
-          </Tooltip>
-        </Box>
+        {/* <Box m={2} mt={3}> */}
+        {/* <Tooltip title="Thangka image depicting Shakaymuni Buddha and 17 Nalanda Panditas"> */}
+
+        {/* </Tooltip> */}
+        {/* </Box> */}
         <Box
           sx={{
             display: "flex",
