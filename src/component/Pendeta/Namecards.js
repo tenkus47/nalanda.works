@@ -1,36 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  Grid,
-  Paper,
-  Container,
-  IconButton,
-  InputBase,
-  Divider,
-} from "@mui/material";
+import { useSelector } from "react-redux";
+import { Grid, Paper, Container, Select, MenuItem } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import SearchIcon from "@mui/icons-material/Search";
-import DirectionsIcon from "@mui/icons-material/Directions";
-import MenuIcon from "@mui/icons-material/Menu";
 
-function Namecards() {
+function Namecards({ setIndex }) {
   const data = useSelector((data) => data.List);
   const [selected, SetSelected] = useState(0);
+  const [selectedPendeta, setSelectedPendeta] = useState(1);
+  const handleSelection = (e) => {
+    const num = parseInt(e.target.value);
+    setSelectedPendeta(num);
+    setIndex(num - 1);
+  };
   useEffect(() => {
-    console.log(selected);
+    // goToPage(selected);
   }, [selected]);
 
   const handleClick = (id) => {
     SetSelected(id);
+    setIndex(parseInt(id));
   };
-
   return (
     <>
-      <center>
-        {" "}
-        <InputSearch />
-      </center>
-
       <Container sx={{ marginTop: 2, display: { md: "block", xs: "none" } }}>
         <Grid container spacing={2}>
           {data.map((pan, index) => (
@@ -40,26 +31,21 @@ function Namecards() {
           ))}
         </Grid>
       </Container>
+      <Container sx={{ marginTop: 2, display: { md: "none", xs: "block" } }}>
+        <label htmlFor="selection"> Select Pendeta : </label>
+        <Select
+          id="selection"
+          onChange={handleSelection}
+          value={selectedPendeta}
+        >
+          {data.map((pan, index) => (
+            <MenuItem md={2} key={pan.id} value={pan.id}>
+              {pan.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </Container>
     </>
-  );
-}
-
-function InputSearch() {
-  return (
-    <Paper
-      component="form"
-      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
-    >
-      <InputBase
-        sx={{ ml: 1, flex: 1 }}
-        placeholder="Search Pandeta"
-        // inputProps={{ "aria-label": "search google maps" }}
-      />
-      <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-        <SearchIcon />
-      </IconButton>
-      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-    </Paper>
   );
 }
 

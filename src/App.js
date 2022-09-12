@@ -1,35 +1,51 @@
 import "./App.css";
 import { connect } from "react-redux";
-import Index from "./component";
+import Header from "./component/Header";
+import Home from "./component/Home";
+import React, { useEffect } from "react";
 import { changeSelection } from "./helper/myAction.js";
-import ReactPageScroller from "react-page-scroller";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import Section3 from "./component/Contact";
+import Pendeta from "./component/Pendeta";
+import { Element, Events, scrollSpy } from "react-scroll";
+import Divider from "@mui/material/Divider";
+function App(props) {
+  useEffect(() => {
+    Events.scrollEvent.register("begin", function (to, element) {
+      console.log("begin", arguments);
+    });
 
-function App() {
-  const IMAGE_URL =
-    "https://preview.redd.it/3hvyombnvpr61.jpg?width=960&crop=smart&auto=webp&s=f810a283e84750388de7f46639203e3ed63547f9";
+    Events.scrollEvent.register("end", function (to, element) {
+      console.log("end", arguments);
+    });
+
+    scrollSpy.update();
+    return () => {
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
+    };
+  }, []);
 
   return (
-    <ReactPageScroller>
-      <Box sx={{ bgcolor: "#659dbd", height: "100%", overflow: "hidden" }}>
-        <Index />
-      </Box>
-      <Box
-        sx={{
-          // background: `url(${IMAGE_URL})`,
-          backgroundSize: "cover",
-          height: "100%",
-        }}
-      >
-        <Typography> Contact Us</Typography>
-      </Box>
-    </ReactPageScroller>
+    <Box>
+      <Element name={"header"} className="element">
+        <Header />
+      </Element>
+      <Home />
+      <Divider />
+      <Element name={"Pandetas"} className="element">
+        <Pendeta />
+      </Element>
+      <Element name={"Contact"} className="element">
+        <Section3 />
+      </Element>
+    </Box>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    list: state.list,
+    list: state.List,
   };
 };
 

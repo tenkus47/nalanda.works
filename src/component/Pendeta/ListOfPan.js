@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import LazyLoad from "react-lazy-load";
+import React from "react";
+import { useSelector } from "react-redux";
+// import LazyLoad from "react-lazy-load";
 import {
   Card,
   CardContent,
@@ -13,8 +13,8 @@ import {
 import Carousel from "react-material-ui-carousel";
 import "./styles.css";
 
-function ListOfPan() {
-  const dispatch = useDispatch();
+function ListOfPan({ index }) {
+  // const dispatch = useDispatch();
 
   const data = useSelector((data) => data.List);
   return (
@@ -30,6 +30,7 @@ function ListOfPan() {
         maxWidth: "850px",
         margin: "0 auto",
       }}
+      index={index}
     >
       {data.map((item, index) => {
         return <Banner item={item} key={index} />;
