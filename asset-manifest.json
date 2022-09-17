@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nalanda.works/static/css/main.531030ca.css",
-    "main.js": "/nalanda.works/static/js/main.379168e1.js",
+    "main.js": "/nalanda.works/static/js/main.bfc3846b.js",
     "static/media/thangka.png": "/nalanda.works/static/media/thangka.aa3bcd261c137860a71b.png",
     "static/media/celebrate.gif": "/nalanda.works/static/media/celebrate.7eea16b25bcf8b6568d2.gif",
     "static/media/17_guru.jpg": "/nalanda.works/static/media/17_guru.32a8f3c53fd541b49211.jpg",
@@ -24,10 +24,10 @@
     "static/media/marcelus.ttf": "/nalanda.works/static/media/marcelus.379c0e43574baa7d41e9.ttf",
     "index.html": "/nalanda.works/index.html",
     "main.531030ca.css.map": "/nalanda.works/static/css/main.531030ca.css.map",
-    "main.379168e1.js.map": "/nalanda.works/static/js/main.379168e1.js.map"
+    "main.bfc3846b.js.map": "/nalanda.works/static/js/main.bfc3846b.js.map"
   },
   "entrypoints": [
     "static/css/main.531030ca.css",
-    "static/js/main.379168e1.js"
+    "static/js/main.bfc3846b.js"
   ]
 }
