@@ -31,6 +31,8 @@ function index() {
       <Typography
         sx={{ alignSelf: { md: "center", xs: "left" } }}
         className="home-heading"
+        variant="h4"
+        my={3}
       >
         The Seventeen Panditas of Nalanda Monastery
       </Typography>
@@ -54,11 +56,11 @@ function index() {
           }}
         >
           <Typography
-            variant={{ xs: "body1", md: "h6" }}
             sx={{
               fontsize: { xs: 1, md: 3 },
               display: "inline",
             }}
+            variant="subtitle1"
           >
             The Seventeen Pandits of Nalanda Monastery refers to a grouping of
             seventeen of the most important and influential Mahayana Buddhist

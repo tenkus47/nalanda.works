@@ -11,13 +11,9 @@ import { Element, Events, scrollSpy } from "react-scroll";
 import Divider from "@mui/material/Divider";
 function App(props) {
   useEffect(() => {
-    Events.scrollEvent.register("begin", function (to, element) {
-      console.log("begin", arguments);
-    });
+    Events.scrollEvent.register("begin", function (to, element) {});
 
-    Events.scrollEvent.register("end", function (to, element) {
-      console.log("end", arguments);
-    });
+    Events.scrollEvent.register("end", function (to, element) {});
 
     scrollSpy.update();
     return () => {
@@ -43,16 +39,17 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    list: state.List,
-  };
-};
+export default App;
+// const mapStateToProps = (state) => {
+//   return {
+//     list: state.List,
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeSelection: () => dispatch(changeSelection()),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     changeSelection: () => dispatch(changeSelection()),
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
